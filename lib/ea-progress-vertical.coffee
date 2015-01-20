@@ -16,6 +16,7 @@
 			@time = time
 			@delay = @time*@change/100
 			@type = type
+			@setProgressUI()
 
 
 		startProgress : ->
@@ -66,7 +67,6 @@
 		animateBottle : (direction='fill',limit=100)=>
 			# console.log change
 			if (direction is 'fill' and @progress >= limit) or (direction is 'empty' and @progress <= limit)
-				console.log 's'
 				clearInterval @animateInterval
 			else
 				if direction is 'fill'
