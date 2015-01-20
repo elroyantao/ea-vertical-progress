@@ -16,7 +16,7 @@ module.exports = (grunt) ->
 			
 			main: 
 				files: 
-					'dist/ea-progress.vertical.min.js': ['lib/ea-progress.vertical.js']
+					'dist/ea-progress-vertical.min.js': ['lib/ea-progress-vertical.js']
 
 
 
