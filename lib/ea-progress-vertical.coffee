@@ -11,7 +11,7 @@
 				breakArray.push 100
 			@breakArray = breakArray
 			@parent = parent
-			@parent.html '<div class="empty"></div><div class="full"></div>'
+			@parent.html '<div class="ea-empty"></div><div class="ea-full"></div>'
 			@progress = if not isNaN(initial) and initial <= 100 and initial >=0 then initial else 0
 			time = if not isNaN(time) and time > 0 then time else 10000
 			delay = time*@change/100
@@ -21,7 +21,6 @@
 
 
 		startProgress : ->
-			console.log @delay
 			limit = if @type is 'fill' then 100 else 0
 			@animateInterval = setInterval @animateBottle, @delay , @type , limit
 
@@ -62,13 +61,14 @@
 			else
 				@animateInterval = setInterval @animateBottle, @delay , 'empty' , progress
 
+			return progress
+
 
 
 
 
 			
 		animateBottle : (direction='fill',limit=100)=>
-			# console.log change
 			if (direction is 'fill' and @progress >= limit) or (direction is 'empty' and @progress <= limit)
 				clearInterval @animateInterval
 			else
@@ -83,9 +83,8 @@
 			empty = 100 - @progress
 			full = @progress
 			
-			# console.log @progress
-			@parent.find('.empty').css 'height', empty+'%'
-			@parent.find('.full').css 'height', full+'%'
+			@parent.find('.ea-empty').css 'height', empty+'%'
+			@parent.find('.ea-full').css 'height', full+'%'
 
 	root.EAProgressVertical = EAProgressVertical
 
