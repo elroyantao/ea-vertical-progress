@@ -12,8 +12,8 @@
 			@breakArray = breakArray
 			@parent = parent
 			@parent.html '<div class="empty"></div><div class="full"></div>'
-			@progress = if not isNAN(initial) and initial <= 100 and initial >=0 then initial else 0
-			time = if not isNAN(time) and time > 0 then time else 10000
+			@progress = if not isNaN(initial) and initial <= 100 and initial >=0 then initial else 0
+			time = if not isNaN(time) and time > 0 then time else 10000
 			delay = time*@change/100
 			@delay = if delay >= 0.05 then delay else 0.05
 			@type = if type in ['fill','empty'] then type else 'fill' 
@@ -48,6 +48,8 @@
 				return @progress
 
 		setProgress : (progress,slow=false)->
+
+			progress = if not isNaN(progress) and progress <= 100 and progress >=0 then progress else 100
 
 			if not slow 
 				@progress = progress
