@@ -47,15 +47,15 @@ false - the current progress <br />
 true - the milestone closest to the progress
 
 ##Set Progress
-```progress.setProgress(value, [speed])``` <br /> 
+```progress.setProgress(value, [slow])``` <br /> 
 sets the progress to the given value
 
 ####value (required)
 integer (0 - 100)
 
-####speed
-```default : 'fast'``` <br /> 
-Speed of animation ```'fast'``` or ```'slow'``` <br /> 
+####slow
+```default : false``` <br /> 
+Speed of animation ```true``` or ```false``` <br /> 
 slow takes the progress speed
 
 
