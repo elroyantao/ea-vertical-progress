@@ -12,10 +12,11 @@
 			@breakArray = breakArray
 			@parent = parent
 			@parent.html '<div class="empty"></div><div class="full"></div>'
-			@progress = initial
-			@time = time
-			@delay = @time*@change/100
-			@type = type
+			@progress = if not isNAN(initial) and initial <= 100 and initial >=0 then initial else 0
+			time = if not isNAN(time) and time > 0 then time else 10000
+			delay = time*@change/100
+			@delay = if delay >= 0.05 then delay else 0.05
+			@type = if type in ['fill','empty'] then type else 'fill' 
 			@setProgressUI()
 
 
@@ -46,9 +47,9 @@
 			else
 				return @progress
 
-		setProgress : (progress,speed='fast')->
+		setProgress : (progress,slow=false)->
 
-			if speed is 'fast'
+			if not slow 
 				@progress = progress
 				@setProgressUI()
 
